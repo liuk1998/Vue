@@ -1,0 +1,52 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-23 17:51:31
+ * @LastEditTime: 2022-03-27 09:46:46
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /Vue/example/test4_for.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue2基础</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+  <div id="app">
+
+    <ol>
+      <!-- 以便能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 key(字符串或数值类型) -->
+
+      <!-- v-for: 遍历。 todo是源数据数组，而 itm 则是数组元素 -->
+      <li v-for="itm in todo" :key="itm.text">{{ itm.text }}</li>
+    </ol>
+
+    <!-- v-for 还支持一个可选的第二个参数，即当前项的索引(下标)。也可以用 of 替代 in 作为分隔符 -->
+    <p v-for="(itm, idx) of todo" :key="idx">{{ idx }} -> {{ itm.text }}</p>
+
+    <!-- 在 v-for 里使用对象, 第二个的参数为键名, 第三个参数为索引 -->
+    <p v-for="(value, key, idx) in obj" :key="idx">{{ value }} -> {{ key }} -> {{ idx }}</p>
+
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        todo: [
+          {text: '刘可'},
+          {text: '刘彦琦'}
+        ],
+        obj: {
+          title: 'lk',
+          id: 1
+        }
+      }
+    });
+  </script>
+</body>
+</html>

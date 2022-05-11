@@ -1,0 +1,43 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-23 11:16:12
+ * @LastEditTime: 2022-03-31 13:53:52
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /Vue/test.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue2基础</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+  <!--
+    数据和 DOM 已经被建立了关联，所有东西都是响应式的。打开浏览器的控制台 (就在这个页面打开)，并修改 app.message 的值，你将看到上例相应地更新。
+    不再和 HTML 直接交互了。一个 Vue 应用会将其挂载到一个 DOM 元素上 (对于这个例子是 #app) 然后对其进行完全控制。
+    那个 HTML 是我们的入口文件，但其余都会发生在新创建的 Vue 实例内部。
+  -->
+
+  <!-- 插值表达式: 无论何时，绑定的数据对象上 message 发生了改变，插值处的内容都会更新。-->
+  <div id="app">
+    <p>{{ message }}</p>
+    <!-- 通过使用 v-once 指令，你也能执行一次性地插值，当数据改变时，插值处的内容不会更新。 -->
+    <p v-once>这个将不会改变: {{ msg + 1 }}</p>
+  </div>
+
+  <script>
+    // 创建一个 Vue 实例
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: '刘可在学习Vue基础 >>>> 插值表达式',
+        msg: 1
+      }
+    });
+  </script>
+</body>
+</html>

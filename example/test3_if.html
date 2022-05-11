@@ -1,0 +1,45 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-23 11:42:02
+ * @LastEditTime: 2022-03-27 09:28:10
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /Vue/example/test3_if.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue2基础</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- 不推荐同时使用 v-if 和 v-for。v-for 具有比 v-if 更高的优先级。一般将 v-if 放到 v-for 的父级标签 -->
+
+    <!-- 如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。 -->
+
+    <!-- v-if: 条件判断 真正的条件渲染 -->
+    <p v-if="flag==='A'">A</p>
+    <!-- v-else-if 也必须紧跟在带 v-if 或者 v-else-if 的元素之后。 -->
+    <!-- <p v-else-if="flag==='B">B</p> -->
+    <!-- v-else 元素必须紧跟在带 v-if 或者 v-else-if 的元素的后面，否则它将不会被识别。 -->
+    <p v-else>其它</p>
+
+    <!-- 带有 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS display。v-show 不支持 <template> 元素，也不支持 v-else -->
+    <p v-show="isShow">v-show</p>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        flag: 'A',
+        isShow: true
+      }
+    });
+  </script>
+</body>
+</html>

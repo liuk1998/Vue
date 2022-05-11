@@ -1,0 +1,82 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-24 11:37:42
+ * @LastEditTime: 2022-03-26 11:21:23
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /Vue/example/test8_life.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue2基础</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{ message }}</p>
+    <button v-on:click="clickBtn">按钮</button>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: '消息'
+      },
+      methods: {
+        clickBtn() {
+          this.message = this.message === '消息' ? '改变' : '消息';
+        }
+      },
+      // 生命周期函数(不能传参数)，不要在选项 property 或回调上使用箭头函数, 因为箭头函数并没有 this，this 会作为变量一直向上级词法作用域查找，直至找到为止，经常导致 Uncaught TypeError: Cannot read property of undefined 或 Uncaught TypeError: this.myMethod is not a function 之类的错误。
+      /**
+       * 在实例生成之前会自动执行的函数。
+       * 组件的选项对象还未创建,el 和 data 并未初始化,因此无法访问methods, data, computed等上的方法和数据。
+      */
+      beforeCreate: function () {
+        console.log('生命周期 beforeCreate -> 创建前 -> 在实例生成之前会自动执行的函数。', this.message);
+      },
+      /**
+       * 实例已经创建完成之后被调用。
+       * 实例已完成以下配置：数据观测、属性和方法的运算，watch/event事件回调，完成了data 数据的初始化，el没有。
+       * 挂在阶段还没有开始, $el属性目前不可见，这是一个常用的生命周期，因为你可以调用methods中的方法，改变data中的数据，获取computed中的计算属性等等。
+      */
+      created() {
+        console.log('生命周期 created -> 创建后 -> 在实例生成之后会自动执行的函数。', this.message);
+      },
+      /**
+       * 挂载开始之前被调用，相关的render函数首次被调用（虚拟DOM）。
+       * 实例已完成以下的配置： 编译模板，把data里面的数据和模板生成html，完成了el和data 初始化，注意此时还没有挂在html到页面上。
+      */
+      beforeMount() {
+        console.log('生命周期 beforeMount -> 挂载前 -> 在模板渲染完成之前执行的函数。', this.message);
+      },
+      /**
+       * 挂载完成，也就是模板中的HTML渲染到HTML页面中，此时一般可以做一些ajax操作，mounted只会执行一次。
+      */
+      mounted() {
+        console.log('生命周期 mounted -> 挂载后 -> 在模板渲染完成之后执行的函数。', this.message);
+      },
+      beforeUpdate() {
+        console.log('生命周期 beforeUpdate -> 更新前 -> 当data中的数据变化时,会立即自动执行的函数。', this.message);
+      },
+      updated() {
+        console.log('生命周期 updated -> 更新后 -> 当data中的数据发生变化,页面重新渲染完后,会自动执行的函数。', this.message);
+      },
+      beforeDestroy() {
+        console.log('生命周期 beforeDestroy -> 销毁前 -> 当Vue应用失效时,会自动执行的函数。', this.message);
+      },
+      destroyed() {
+        console.log('生命周期 destroyed -> 销毁后 -> 当Vue应用失效时,且DOM完全销毁之后,会自动执行。', this.message);
+      }
+    });
+  </script>
+</body>
+
+</html>

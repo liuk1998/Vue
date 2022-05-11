@@ -1,0 +1,62 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-26 11:17:04
+ * @LastEditTime: 2022-03-26 11:56:10
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /Vue/example/test9_watch.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue2基础</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+  <div id="app">
+    <p>Original message: {{ message }}</p>
+    <p>Computed message: {{ reversedMessage }}</p>
+    <p>Watch message: {{ fullName }}</p>
+    <button @click="setName">按钮</button>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello!',
+        firstName: '刘',
+        lastName: '可',
+        fullName: '刘可' // 监听器(如果看计算属性的话要注释)
+      },
+      methods: {
+        setName() {
+          this.lastName = this.lastName === '可' ? '彦琦' : '可';
+        }
+      },
+      // 既能用computed 实现又可以用 watch 监听来实现的功能，推荐用 computed
+      // 对于任何复杂逻辑，你都应当使用计算属性。计算属性是基于它们的响应式依赖进行缓存的。只在相关响应式依赖发生改变时它们才会重新求值。默认只有 getter
+      computed: {
+        reversedMessage() {
+          return this.message.split('').reverse().join('');
+        },
+        // fullName() {
+        //   return this.firstName + this.lastName; // 计算属性(如果看监听的话要注释)
+        // }
+      },
+      // 一种更通用的方式来观察和响应 Vue 实例上的数据变动：侦听属性。监听的是已经在 data 中定义的变量，当该变量变化时，会触发 watch 中的方法；
+      watch: {
+        firstName(val) {
+          this.fullName = val + this.lastName;
+        },
+        lastName(val) {
+          this.fullName = this.firstName + val;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

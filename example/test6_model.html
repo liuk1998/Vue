@@ -1,0 +1,72 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-23 18:02:38
+ * @LastEditTime: 2022-04-06 11:00:20
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /Vue/example/test6_model.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue2基础</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- 文本 -->
+    <p>Message is: {{ message }}</p>
+    <!-- v-model 指令，它能轻松实现表单输入和应用状态之间的双向绑定。 -->
+    <input type="text" v-model="message" placeholder="请输入"><hr>
+
+    <!-- 复选框 -->
+    <input type="checkbox" id="LiuKe" value="LiuKe" v-model="checkedNames">
+    <label for="LiuKe">刘可</label>
+    <input type="checkbox" id="LiuYanQi" value="LiuYanQi" v-model="checkedNames">
+    <label for="LiuYanQi">刘彦琦</label>
+    <input type="checkbox" id="LiuYin" value="LiuYin" v-model="checkedNames">
+    <label for="LiuYin">刘寅</label>
+    <p>Checked names: {{ checkedNames }}</p><hr>
+
+    <!-- 单选框 -->
+    <input type="radio" id="basketball" value="basketball" v-model="sports">
+    <label for="basketball">篮球</label>
+    <input type="radio" id="football" value="football" v-model="sports">
+    <label for="football">足球</label>
+    <input type="radio" id="bike" value="bike" v-model="sports">
+    <label for="bike">骑自行车</label>
+    <p>Checked sports: {{ sports }}</p><hr>
+
+    <!-- 选择框 -->
+    <select name="下拉" id="" v-model="selectList">
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+    </select>
+    <p>Selected: {{ selectList }}</p>
+
+    <!--
+      修饰符:
+      1 .lazy: 在默认情况下，v-model 在每次 input 事件触发后将输入框的值与数据进行同步。你可以添加 lazy 修饰符，从而转为在 change 事件之后进行同步。
+      2 .number: 自动将用户的输入值转为数值类型
+      3 .trim: 自动过滤用户输入的首尾空白字符
+    -->
+
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: '',
+        checkedNames: [],
+        sports: '',
+        selectList: []
+      }
+    });
+  </script>
+</body>
+</html>

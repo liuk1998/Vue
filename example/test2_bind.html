@@ -1,0 +1,43 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-23 11:35:28
+ * @LastEditTime: 2022-03-26 11:57:09
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /Vue/example/test2_binding.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue2基础</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- 指令。指令带有前缀 v-，以表示它们是 Vue 提供的特殊 attribute。 -->
+
+    <!-- v-bind: 绑定属性 -->
+    <span v-bind:title="message">鼠标悬停几秒钟查看此处动态绑定的提示信息！</span>
+    <!-- 动态参数: 这里的 attributeName 会被作为一个 JavaScript 表达式进行动态求值，求得的值将会作为最终的参数来使用。注: data属性取值的方式不一样，不要采取驼峰式命名变量。 -->
+    <a v-bind:href="url" v-bind:[attr]="open">超链接</a>
+    <!-- v-bind的缩写 -->
+    <p :title="abbreviation">v-bind</p>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: `页面加载与${new Date().toLocaleString()}`,
+        url: 'https://www.baidu.com/',
+        attr: 'target',
+        open: '_blank',
+        abbreviation: 'v-bind的缩写'
+      }
+    });
+  </script>
+</body>
+</html>

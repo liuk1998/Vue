@@ -1,0 +1,86 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-23 17:56:35
+ * @LastEditTime: 2022-03-27 10:27:27
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /Vue/example/test5_on.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue2基础</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{ message }}</p>
+    <!-- v-on 指令添加一个事件监听器, 用于监听 DOM 事件 -->
+    <button v-on:click="clickBtn">按钮</button>
+
+    <!-- 访问原始的 DOM 事件。可以用特殊变量 $event 把它传入方法 -->
+    <button @click="getAbbreviation('v-on的缩写', $event)">打印</button>
+
+    <!--
+      事件修饰符:
+      1 .stop: 阻止冒泡
+      2 .prevent: 阻止默认事件
+      3 .capture: 添加事件侦听器时使用事件捕获模式
+      4 .self: 只当该事件在该元素本身时（不是子元素）触发时才回调
+      5 .once: 事件将只会触发一次
+      6 .passive: 不阻止默认事件，能够提升移动端的性能。passive和prevent冲突，不能同时绑定在一个监听器上。
+     -->
+
+    <!--
+      按键修饰符:
+      .enter => // enter键
+      .tab => // tab键
+      .delete (捕获“删除”和“退格”按键) => // 删除键
+      .esc => // 取消键
+      .space => // 空格键
+      .up => // 上
+      .down => // 下
+      .left => // 左
+      .right => // 右
+    -->
+
+    <!--
+      系统修饰键:
+      .ctrl
+      .alt
+      .shift
+      .meta
+    -->
+
+    <!--
+      鼠标按钮修饰符:
+      .left
+      .right
+      .middle
+    -->
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: '刘可在学习Vue'
+      },
+      methods: {
+        clickBtn() {
+          this.message = this.message === '刘可在学习Vue' ? '刘可在想刘彦琦' : '刘可在学习Vue';
+        },
+        getAbbreviation(msg, event) {
+          console.log(msg, event);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

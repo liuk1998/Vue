@@ -1,0 +1,47 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-26 13:09:35
+ * @LastEditTime: 2022-03-26 19:28:19
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /Vue/example/test11_style.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue2基础</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 对象语法 -->
+    <div :style="styleObject">style对象语法</div>
+    <!-- 数组语法 -->
+    <div :style="[baseStyles, overridingStyles]">style数组语法</div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        styleObject: {
+          color: 'red',
+          fontSize: '13px'
+        },
+        baseStyles: {
+          color: 'green',
+        },
+        overridingStyles: {
+          fontSize: '16px'
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

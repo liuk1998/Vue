@@ -1,0 +1,57 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-26 12:22:27
+ * @LastEditTime: 2022-03-26 13:12:01
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /Vue/example/test10_class.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue2基础</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <style>
+    .static {
+      font-size: 20px;
+    }
+    .action {
+      color: orange;
+    }
+    .active {
+      font-size: 30px;
+    }
+    .error {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!--
+      对象语法: 传给 v-bind:class 一个对象，以动态地切换 class, 表示 active 这个 class 存在与否将取决于数据 property isActive 的真实性。
+      v-bind:class 指令也可以与普通的 class 共存。结果渲染为：<div class="static active"></div>
+    -->
+    <div class="static" :class="{ action: isActive }">偶买噶</div>
+    <!--
+      数组语法: 可以把一个数组传给 v-bind:class，以应用一个 class 列表
+      结果渲染为：<div class="active error"></div>
+    -->
+    <div :class="[activeClass, errClass]">嗨嗨</div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        isActive: true,
+        activeClass: 'active',
+        errClass: 'error'
+      }
+    });
+  </script>
+</body>
+</html>
